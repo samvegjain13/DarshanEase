@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import API_BASE from '../api';
 import Onavbar from './Onavbar';
 import { Link } from 'react-router-dom';
 
@@ -9,7 +10,7 @@ const Odarshans = () => {
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem('user'));
     if (user) {
-      axios.get(`http://localhost:7000/organizer/getdarshans/${user.id}`)
+      axios.get(`${API_BASE}/organizer/getdarshans/${user.id}`)
         .then((response) => setItems(response.data))
         .catch((error) => console.error('Error fetching darshans: ', error));
     }

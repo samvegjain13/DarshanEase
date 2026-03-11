@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import API_BASE from '../api';
 import { useNavigate, useParams } from 'react-router-dom';
 import Anavbar from './Anavbar';
 
@@ -12,7 +13,7 @@ const OrganizerEdit = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get(`http://localhost:7000/organizer/organizer/${id}`)
+    axios.get(`${API_BASE}/organizer/organizer/${id}`)
       .then(r => setUser(r.data))
       .catch(console.error);
   }, [id]);
@@ -22,7 +23,7 @@ const OrganizerEdit = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`http://localhost:7000/organizer/organizeredit/${id}`, user);
+      await axios.put(`${API_BASE}/organizer/organizeredit/${id}`, user);
       alert('Organizer updated successfully');
       navigate('/organizers');
     } catch (error) { console.error(error); }

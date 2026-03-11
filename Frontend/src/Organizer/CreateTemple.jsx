@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import API_BASE from '../api';
 import { useNavigate } from 'react-router-dom';
 import Onavbar from './Onavbar';
 import moment from 'moment';
@@ -29,7 +30,7 @@ function CreateTemple() {
       fd.append('templeImage', formData.templeImage);
       fd.append('organizerName', user.name);
       fd.append('organizerId', user.id);
-      await axios.post('http://localhost:7000/organizer/createtemple', fd);
+      await axios.post(`${API_BASE}/organizer/createtemple`, fd);
       alert('Temple added successfully');
       navigate('/mytemple');
     } catch (error) { console.error('Error adding temple: ', error); }

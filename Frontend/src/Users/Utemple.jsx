@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import Unavbar from './Unavbar';
+import API_BASE from '../api';
 
 const Utemple = () => {
   const [item, setItem] = useState(null);
@@ -9,11 +10,11 @@ const Utemple = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    axios.get(`http://localhost:7000/organizer/gettemplebyid/${id}`)
+    axios.get(`${API_BASE}/organizer/gettemplebyid/${id}`)
       .then((resp) => {
         setItem(resp.data);
         const organizerId = resp.data.organizerId;
-        axios.get(`http://localhost:7000/organizer/getdarshans/${organizerId}`)
+        axios.get(`${API_BASE}/organizer/getdarshans/${organizerId}`)
           .then((response) => setDarshan(response.data))
           .catch((error) => console.error('Error fetching darshan: ', error));
       })
@@ -26,7 +27,7 @@ const Utemple = () => {
       {item && (
         <div>
           <div style={{ position: 'relative', height: '350px', overflow: 'hidden' }}>
-            <img src={`http://localhost:7000/organizer/${item?.templeImage}`} alt="Temple" style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'brightness(0.4)' }} />
+            <img src={`${API_BASE}/organizer/${item?.templeImage}`} alt="Temple" style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'brightness(0.4)' }} />
             <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, #0f0f23, transparent)', display: 'flex', alignItems: 'flex-end', padding: '40px' }}>
               <h1 style={{ fontSize: '2.5rem', fontWeight: '800', background: 'linear-gradient(135deg, #f97316, #f59e0b)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>{item.templeName}</h1>
             </div>

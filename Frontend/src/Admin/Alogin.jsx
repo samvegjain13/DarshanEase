@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
+import API_BASE from '../api';
 
 const Alogin = () => {
   const [email, setEmail] = useState('');
@@ -10,7 +11,7 @@ const Alogin = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post("http://localhost:7000/admin/alogin", { email, password })
+    axios.post(`${API_BASE}/admin/alogin`, { email, password })
       .then((res) => {
         if (res.data.Status === "Success") {
           localStorage.setItem('user', JSON.stringify(res.data.user));

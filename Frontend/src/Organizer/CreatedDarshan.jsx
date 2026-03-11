@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import API_BASE from '../api';
 import { useNavigate } from 'react-router-dom';
 import Onavbar from './Onavbar';
 import moment from 'moment';
@@ -16,7 +17,7 @@ function CreatedDarshan() {
 
   useEffect(() => {
     if (user) {
-      axios.get(`http://localhost:7000/organizer/gettemple/${user.id}`)
+      axios.get(`${API_BASE}/organizer/gettemple/${user.id}`)
         .then((response) => setItems(response.data))
         .catch(console.error);
     }
@@ -42,7 +43,7 @@ function CreatedDarshan() {
         open: moment.tz(formData.open, 'HH:mm', 'Asia/Kolkata').format('hh:mm A'),
         close: moment.tz(formData.close, 'HH:mm', 'Asia/Kolkata').format('hh:mm A'),
       };
-      await axios.post('http://localhost:7000/organizer/createdarshan', dataToSend);
+      await axios.post(`${API_BASE}/organizer/createdarshan`, dataToSend);
       alert('Darshan added successfully');
       navigate('/odarshans');
     } catch (error) { console.error('Error adding darshan: ', error); }

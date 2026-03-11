@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import API_BASE from '../api';
 
 const Usignup = () => {
   const [name, setName] = useState('');
@@ -10,7 +11,7 @@ const Usignup = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post("http://localhost:7000/user/usignup", { name, email, password })
+    axios.post(`${API_BASE}/user/usignup`, { name, email, password })
       .then(() => { alert('Account created'); navigate('/ulogin'); })
       .catch(() => alert("Failed to create an account"));
   };

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import API_BASE from '../api';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { Link } from 'react-router-dom';
 import Footer from '../Components/Footer';
@@ -13,9 +14,9 @@ function Ohome() {
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem('user'));
     if (user) {
-      axios.get(`http://localhost:7000/organizer/gettemple/${user.id}`).then(r => setTemples(r.data)).catch(console.error);
-      axios.get(`http://localhost:7000/organizer/getdarshans/${user.id}`).then(r => setDarshans(r.data)).catch(console.error);
-      axios.get(`http://localhost:7000/organizer/getorganizerbookings/${user.id}`).then(r => setBookings(r.data)).catch(console.error);
+      axios.get(`${API_BASE}/organizer/gettemple/${user.id}`).then(r => setTemples(r.data)).catch(console.error);
+      axios.get(`${API_BASE}/organizer/getdarshans/${user.id}`).then(r => setDarshans(r.data)).catch(console.error);
+      axios.get(`${API_BASE}/organizer/getorganizerbookings/${user.id}`).then(r => setBookings(r.data)).catch(console.error);
     }
   }, []);
 

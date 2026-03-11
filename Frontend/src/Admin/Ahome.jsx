@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import API_BASE from '../api';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { Link } from 'react-router-dom';
 import Anavbar from './Anavbar';
@@ -12,11 +13,11 @@ function Ahome() {
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
-    axios.get(`http://localhost:7000/user/users`).then(r => setUsers(r.data)).catch(console.error);
-    axios.get(`http://localhost:7000/organizer/organizers`).then(r => setVendors(r.data)).catch(console.error);
-    axios.get(`http://localhost:7000/organizer/gettemples`).then(r => setTemples(r.data)).catch(console.error);
-    axios.get(`http://localhost:7000/organizer/getdarshans`).then(r => setDarshans(r.data)).catch(console.error);
-    axios.get(`http://localhost:7000/user/getbookings`).then(r => setOrders(r.data)).catch(console.error);
+    axios.get(`${API_BASE}/user/users`).then(r => setUsers(r.data)).catch(console.error);
+    axios.get(`${API_BASE}/organizer/organizers`).then(r => setVendors(r.data)).catch(console.error);
+    axios.get(`${API_BASE}/organizer/gettemples`).then(r => setTemples(r.data)).catch(console.error);
+    axios.get(`${API_BASE}/organizer/getdarshans`).then(r => setDarshans(r.data)).catch(console.error);
+    axios.get(`${API_BASE}/user/getbookings`).then(r => setOrders(r.data)).catch(console.error);
   }, []);
 
   const stats = [

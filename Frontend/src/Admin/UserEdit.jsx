@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import API_BASE from '../api';
 import { useNavigate, useParams } from 'react-router-dom';
 import Anavbar from './Anavbar';
 
@@ -12,7 +13,7 @@ const UserEdit = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get(`http://localhost:7000/user/users/${id}`)
+    axios.get(`${API_BASE}/user/users/${id}`)
       .then(r => setUser(r.data))
       .catch(console.error);
   }, [id]);
@@ -22,7 +23,7 @@ const UserEdit = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`http://localhost:7000/user/useredit/${id}`, user);
+      await axios.put(`${API_BASE}/user/useredit/${id}`, user);
       alert('User updated successfully');
       navigate('/users');
     } catch (error) { console.error(error); }

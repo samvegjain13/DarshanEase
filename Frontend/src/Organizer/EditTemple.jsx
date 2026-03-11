@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import API_BASE from '../api';
 import { useNavigate, useParams } from 'react-router-dom';
 import Onavbar from './Onavbar';
 
@@ -12,7 +13,7 @@ function EditTemple() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get(`http://localhost:7000/organizer/gettemplebyid/${id}`)
+    axios.get(`${API_BASE}/organizer/gettemplebyid/${id}`)
       .then(response => {
         const d = response.data;
         setFormData({ description: d.description, templeName: d.templeName, open: d.open, close: d.close, location: d.location });
@@ -35,7 +36,7 @@ function EditTemple() {
       fd.append('description', formData.description);
       fd.append('location', formData.location);
       fd.append('templeImage', formData.templeImage);
-      await axios.put(`http://localhost:7000/organizer/updatetemple/${id}`, fd);
+      await axios.put(`${API_BASE}/organizer/updatetemple/${id}`, fd);
       alert('Temple updated successfully');
       navigate('/mytemple');
     } catch (error) { console.error('Error updating temple: ', error); }

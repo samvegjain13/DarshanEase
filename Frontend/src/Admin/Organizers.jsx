@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import API_BASE from '../api';
 import { Link } from 'react-router-dom';
 import Anavbar from './Anavbar';
 
@@ -9,25 +10,25 @@ const Organizers = () => {
   const [showDetails, setShowDetails] = useState(false);
 
   useEffect(() => {
-    axios.get(`http://localhost:7000/organizer/organizers`)
+    axios.get(`${API_BASE}/organizer/organizers`)
       .then((response) => setUsers(response.data))
       .catch(console.error);
   }, []);
 
   const deleteData = (taskId) => {
-    axios.delete(`http://localhost:7000/organizer/organizerdelete/${taskId}`);
+    axios.delete(`${API_BASE}/organizer/organizerdelete/${taskId}`);
     window.location.assign('/organizers');
     alert('Organizer deleted');
   };
 
   const deleteitem = (taskId) => {
-    axios.delete(`http://localhost:7000/organizer/templedelete/${taskId}`);
+    axios.delete(`${API_BASE}/organizer/templedelete/${taskId}`);
     window.location.assign('/organizers');
     alert('Deleted');
   };
 
   const fetchOrganizerTemples = (userId) => {
-    axios.get(`http://localhost:7000/organizer/gettemple/${userId}`)
+    axios.get(`${API_BASE}/organizer/gettemple/${userId}`)
       .then((response) => { setUserbookings(response.data); setShowDetails(true); })
       .catch(console.error);
   };
@@ -71,7 +72,7 @@ const Organizers = () => {
             <h3 style={{ color: '#f97316', fontWeight: '700', marginBottom: '20px', textAlign: 'center' }}>Temples</h3>
             {userbookings.map((item) => (
               <div key={item._id} style={{ background: 'rgba(15, 15, 35, 0.8)', borderRadius: '12px', padding: '16px', marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '16px', flexWrap: 'wrap', border: '1px solid rgba(249, 115, 22, 0.08)' }}>
-                <img src={`http://localhost:7000/organizer/${item?.templeImage}`} alt="Temple" style={{ width: '80px', height: '60px', borderRadius: '10px', objectFit: 'cover' }} />
+                <img src={`${API_BASE}/organizer/${item?.templeImage}`} alt="Temple" style={{ width: '80px', height: '60px', borderRadius: '10px', objectFit: 'cover' }} />
                 <div style={{ flex: 1, display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(120px, 1fr))', gap: '8px' }}>
                   <div><p style={{ color: '#64748b', fontSize: '0.7rem', margin: 0 }}>Temple</p><p style={{ color: '#f1f5f9', fontSize: '0.85rem', margin: 0 }}>{item.templeName}</p></div>
                   <div><p style={{ color: '#64748b', fontSize: '0.7rem', margin: 0 }}>Timings</p><p style={{ color: '#f1f5f9', fontSize: '0.85rem', margin: 0 }}>{item.open}-{item.close}</p></div>

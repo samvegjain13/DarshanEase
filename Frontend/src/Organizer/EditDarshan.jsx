@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import API_BASE from '../api';
 import { useNavigate, useParams } from 'react-router-dom';
 import Onavbar from './Onavbar';
 
@@ -12,7 +13,7 @@ function EditDarshan() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get(`http://localhost:7000/organizer/getdarshan/${id}`)
+    axios.get(`${API_BASE}/organizer/getdarshan/${id}`)
       .then((res) => {
         const data = res.data;
         setFormData({
@@ -56,7 +57,7 @@ function EditDarshan() {
     if (file) data.append('templeImage', file);
 
     try {
-      await axios.put(`http://localhost:7000/organizer/updatedarshan/${id}`, data, {
+      await axios.put(`${API_BASE}/organizer/updatedarshan/${id}`, data, {
         headers: { 'Content-Type': 'multipart/form-data' }
       });
       alert('Darshan updated successfully');

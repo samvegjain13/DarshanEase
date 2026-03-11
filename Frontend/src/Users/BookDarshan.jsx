@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import API_BASE from '../api';
 import { useNavigate, useParams } from 'react-router-dom';
 import Unavbar from './Unavbar';
 
@@ -14,7 +15,7 @@ function BookDarshan() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get(`http://localhost:7000/user/darshan/${id}`)
+    axios.get(`${API_BASE}/user/darshan/${id}`)
       .then((resp) => setItem(resp.data))
       .catch((error) => console.log("Failed to fetch:", error));
   }, [id]);
@@ -31,7 +32,7 @@ function BookDarshan() {
       const user = JSON.parse(localStorage.getItem('user'));
       updatedFormData.userId = user.id;
       updatedFormData.userName = user.name;
-      await axios.post('http://localhost:7000/user/userbooking', updatedFormData);
+      await axios.post(`${API_BASE}/user/userbooking`, updatedFormData);
       alert('Booked successfully');
       navigate('/mybookings');
     } catch (error) {
