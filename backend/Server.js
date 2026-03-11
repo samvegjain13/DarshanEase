@@ -13,7 +13,7 @@ const app = express();
 // Middleware
 app.use(bodyParser.json());
 app.use(cors({
-  origin: ["http://localhost:5173", "https://darshanease.onrender.com", "https://darshanease-frontend.onrender.com", "https://darshanease-frontend-lc1m.onrender.com"],
+  origin: ["http://localhost:5173", "https://darshanease-frontend-lc1m.onrender.com"],
   methods: ["POST", "GET", "DELETE", "PUT"],
   credentials: true
 }));
