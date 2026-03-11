@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import API_BASE from '../api';
+import API_BASE, { getImageUrl } from '../api';
 import Onavbar from './Onavbar';
 import { Link } from 'react-router-dom';
 
@@ -31,7 +31,7 @@ const Mytemple = () => {
 
         {items.map((item) => (
           <div key={item._id} style={{ background: 'rgba(26, 26, 46, 0.8)', border: '1px solid rgba(249, 115, 22, 0.12)', borderRadius: '16px', overflow: 'hidden' }}>
-            <img src={`${API_BASE}/organizer/${item.templeImage}`} alt="Temple" style={{ width: '100%', height: '280px', objectFit: 'cover' }} />
+            <img src={`${getImageUrl(item.templeImage)}`} alt="Temple" style={{ width: '100%', height: '280px', objectFit: 'cover' }} />
             <div style={{ padding: '24px' }}>
               <h3 style={{ color: '#f97316', fontSize: '1.3rem', fontWeight: '700', marginBottom: '16px' }}>{item.templeName}</h3>
               <div style={{ display: 'flex', gap: '24px', marginBottom: '12px' }}>
