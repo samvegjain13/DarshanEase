@@ -36,7 +36,7 @@ function Bookings() {
         {orders.length === 0 && <p style={{ textAlign: 'center', color: '#64748b' }}>No bookings yet</p>}
         {orders.map((item) => (
           <div key={item._id} style={{ background: 'rgba(26, 26, 46, 0.8)', border: '1px solid rgba(249, 115, 22, 0.12)', borderRadius: '16px', padding: '20px', marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '20px', flexWrap: 'wrap' }}>
-            <img src={`${getImageUrl(item?.templeImage)}`} alt="Temple" style={{ width: '80px', height: '60px', borderRadius: '10px', objectFit: 'cover' }} />
+            <img src={getImageUrl(item?.templeImage)} alt="Temple" style={{ width: '80px', height: '60px', borderRadius: '10px', objectFit: 'cover' }} />
             <div style={{ flex: 1, display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(110px, 1fr))', gap: '10px' }}>
               <div><p style={{ color: '#64748b', fontSize: '0.7rem', margin: 0 }}>Temple</p><p style={{ color: '#f1f5f9', fontWeight: '600', fontSize: '0.8rem', margin: 0 }}>{item.templeName}</p></div>
               <div><p style={{ color: '#64748b', fontSize: '0.7rem', margin: 0 }}>Darshan</p><p style={{ color: '#f1f5f9', fontWeight: '600', fontSize: '0.8rem', margin: 0 }}>{item.darshanName}</p></div>

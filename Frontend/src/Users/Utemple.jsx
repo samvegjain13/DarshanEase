@@ -27,7 +27,7 @@ const Utemple = () => {
       {item && (
         <div>
           <div style={{ position: 'relative', height: '350px', overflow: 'hidden' }}>
-            <img src={`${getImageUrl(item?.templeImage)}`} alt="Temple" style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'brightness(0.4)' }} />
+            <img src={getImageUrl(item?.templeImage)} alt="Temple" style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'brightness(0.4)' }} />
             <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, #0f0f23, transparent)', display: 'flex', alignItems: 'flex-end', padding: '40px' }}>
               <h1 style={{ fontSize: '2.5rem', fontWeight: '800', background: 'linear-gradient(135deg, #f97316, #f59e0b)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>{item.templeName}</h1>
             </div>

@@ -24,7 +24,7 @@ const Utemples = () => {
           {items.map((item) => (
             <div key={item._id} style={cardStyle}>
               <div style={{ height: '200px', overflow: 'hidden' }}>
-                <img src={`${getImageUrl(item.templeImage)}`} alt="Temple" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                <img src={getImageUrl(item.templeImage)} alt="Temple" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
               </div>
               <div style={{ padding: '20px' }}>
                 <h3 style={{ color: '#f97316', fontSize: '1.15rem', fontWeight: '700', marginBottom: '12px' }}>{item.templeName}</h3>

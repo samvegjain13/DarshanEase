@@ -53,7 +53,7 @@ function Mybookings() {
             background: 'rgba(26, 26, 46, 0.8)', border: '1px solid rgba(249, 115, 22, 0.12)', borderRadius: '16px',
             padding: '24px', marginBottom: '20px', display: 'flex', alignItems: 'center', gap: '24px', flexWrap: 'wrap',
           }}>
-            <img src={`${getImageUrl(item.templeImage)}`} alt="Temple" style={{ width: '80px', height: '80px', borderRadius: '12px', objectFit: 'cover' }} />
+            <img src={getImageUrl(item.templeImage)} alt="Temple" style={{ width: '80px', height: '80px', borderRadius: '12px', objectFit: 'cover' }} />
             <div style={{ background: 'white', padding: '4px', borderRadius: '8px' }}>
               <QRCode size={64} value={item._id.slice(0, 10)} viewBox={`0 0 256 256`} />
             </div>

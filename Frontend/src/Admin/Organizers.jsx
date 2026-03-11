@@ -72,7 +72,7 @@ const Organizers = () => {
             <h3 style={{ color: '#f97316', fontWeight: '700', marginBottom: '20px', textAlign: 'center' }}>Temples</h3>
             {userbookings.map((item) => (
               <div key={item._id} style={{ background: 'rgba(15, 15, 35, 0.8)', borderRadius: '12px', padding: '16px', marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '16px', flexWrap: 'wrap', border: '1px solid rgba(249, 115, 22, 0.08)' }}>
-                <img src={`${getImageUrl(item?.templeImage)}`} alt="Temple" style={{ width: '80px', height: '60px', borderRadius: '10px', objectFit: 'cover' }} />
+                <img src={getImageUrl(item?.templeImage)} alt="Temple" style={{ width: '80px', height: '60px', borderRadius: '10px', objectFit: 'cover' }} />
                 <div style={{ flex: 1, display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(120px, 1fr))', gap: '8px' }}>
                   <div><p style={{ color: '#64748b', fontSize: '0.7rem', margin: 0 }}>Temple</p><p style={{ color: '#f1f5f9', fontSize: '0.85rem', margin: 0 }}>{item.templeName}</p></div>
                   <div><p style={{ color: '#64748b', fontSize: '0.7rem', margin: 0 }}>Timings</p><p style={{ color: '#f1f5f9', fontSize: '0.85rem', margin: 0 }}>{item.open}-{item.close}</p></div>

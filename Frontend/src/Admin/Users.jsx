@@ -72,7 +72,7 @@ const Users = () => {
             <h3 style={{ color: '#f97316', fontWeight: '700', marginBottom: '20px', textAlign: 'center' }}>User Bookings</h3>
             {userbookings.map((item) => (
               <div key={item._id} style={{ background: 'rgba(15, 15, 35, 0.8)', borderRadius: '12px', padding: '16px', marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '16px', flexWrap: 'wrap', border: '1px solid rgba(249, 115, 22, 0.08)' }}>
-                <img src={`${getImageUrl(item?.templeImage)}`} alt="Temple" style={{ width: '60px', height: '60px', borderRadius: '10px', objectFit: 'cover' }} />
+                <img src={getImageUrl(item?.templeImage)} alt="Temple" style={{ width: '60px', height: '60px', borderRadius: '10px', objectFit: 'cover' }} />
                 <div style={{ flex: 1, display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(100px, 1fr))', gap: '8px' }}>
                   <div><p style={{ color: '#64748b', fontSize: '0.7rem', margin: 0 }}>Temple</p><p style={{ color: '#f1f5f9', fontSize: '0.8rem', margin: 0 }}>{item.templeName}</p></div>
                   <div><p style={{ color: '#64748b', fontSize: '0.7rem', margin: 0 }}>Darshan</p><p style={{ color: '#f1f5f9', fontSize: '0.8rem', margin: 0 }}>{item.darshanName}</p></div>
